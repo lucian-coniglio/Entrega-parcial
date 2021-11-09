@@ -1,0 +1,22 @@
+import Semillas.*
+import Parcelas.*
+import INTA.*
+
+test "Semillas" {
+	const menta1 = new Menta(altura = 1, fechaObt = 2009)
+	const soja1 = new Soja(altura = 0.5, fechaObt = 2005)
+	const quinoa1 = new Quinoa(altura = 0.5, fechaObt = 2005, tiempoToleranciaSolar = 11)
+	assert.that(not menta1.esFuerte() and menta1.daSemillas())
+	assert.equals(menta1.espacioOcupado(), 3)
+	assert.that(not soja1.esFuerte() and not soja1.daSemillas())
+	assert.equals(soja1.espacioOcupado(), 0.25)
+	assert.that(quinoa1.esFuerte() and quinoa1.daSemillas())
+	assert.equals(quinoa1.espacioOcupado(), 0.5)
+	const menta2 = new Hierbabuena(altura = 0.2, fechaObt = 2009)
+	assert.that(not menta2.esFuerte() and not menta2.daSemillas())
+	assert.equals(menta2.espacioOcupado(), 1.2)
+	const soja2 = new SojaTransgenica(altura = 2, fechaObt = 2009)
+	assert.that(not soja2.esFuerte() and not soja2.daSemillas())
+	assert.equals(soja2.espacioOcupado(), 1)
+}
+
